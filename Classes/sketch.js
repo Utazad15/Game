@@ -41,7 +41,8 @@ function preload(){
   sam6 = loadAnimation("assets/77323.png","assets/77324.png","assets/77325.png");
   sam7 = loadAnimation("assets/77330.png");
   sam8 = loadAnimation("assets/77331.png","assets/77332.png","assets/77333.png");
-  bgSound = loadSound("sounds/01 - Stardew Valley Overture.mp3");
+  soundFormats('mp3');
+  bgSound = loadSound("01 - Stardew Valley Overture.mp3");
   faceImg = loadImage("assets/77317.png");
   healthImg = loadImage("assets/77315.png");
   clockImg = loadImage("assets/77316.png");
@@ -54,6 +55,8 @@ function preload(){
 
 function setup(){
   createCanvas(1340,675);
+
+  bgSound.loop();
 
   bg2 = createSprite(650,285,50,50);
   bg2.addImage(bg1);
@@ -317,8 +320,6 @@ function setup(){
   t141 = createSprite(10,1500,220,250);
   t142 = createSprite(-435,1500,220,250);
   t143 = createSprite(-150,1580,100,100);
-
-
   
   array = [b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,
            b25,b26,b27,b28,b29,b30,b31,b32,b33,b34,b35,b36,b37,b38,b39,b40,b41,b42,b43,b44,b45,b46,
@@ -332,9 +333,7 @@ function setup(){
            ,t134,t135,t136,t137,t138,t139,t140,t141,t142,t143];
            
   array1 = [a,sam,face,health,inventory,clock];
-  array2 = [bg2,logo,play];
-    
-    bgSound.loop();
+  array2 = [bg2,logo,play];  
     
   }
 
@@ -343,7 +342,7 @@ function setup(){
   
   drawSprites();
 
-  clocks();
+ 
 
   if(gameState === 1){
     if(mousePressedOver(play)){
@@ -360,6 +359,8 @@ function setup(){
     }
   }
   else if(gameState === 2){
+
+  clocks();
 
   for(var j = 0;j<array1.length;j++){
     array1[j].visible = true;
